@@ -13,6 +13,7 @@
 		969622E423CF9C1E00980E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 969622E323CF9C1E00980E4F /* Assets.xcassets */; };
 		969622E723CF9C1E00980E4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 969622E623CF9C1E00980E4F /* Preview Assets.xcassets */; };
 		969622EA23CF9C1E00980E4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969622E823CF9C1E00980E4F /* LaunchScreen.storyboard */; };
+		969622F623CF9E5400980E4F /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969622F523CF9E5400980E4F /* Dice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		969622E623CF9C1E00980E4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		969622E923CF9C1E00980E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		969622EB23CF9C1E00980E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		969622F523CF9E5400980E4F /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				969622DD23CF9C1B00980E4F /* AppDelegate.swift */,
 				969622DF23CF9C1B00980E4F /* SceneDelegate.swift */,
 				969622E123CF9C1B00980E4F /* ContentView.swift */,
+				969622F523CF9E5400980E4F /* Dice.swift */,
 				969622E323CF9C1E00980E4F /* Assets.xcassets */,
 				969622E823CF9C1E00980E4F /* LaunchScreen.storyboard */,
 				969622EB23CF9C1E00980E4F /* Info.plist */,
@@ -148,6 +151,7 @@
 			files = (
 				969622DE23CF9C1B00980E4F /* AppDelegate.swift in Sources */,
 				969622E023CF9C1B00980E4F /* SceneDelegate.swift in Sources */,
+				969622F623CF9E5400980E4F /* Dice.swift in Sources */,
 				969622E223CF9C1B00980E4F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
