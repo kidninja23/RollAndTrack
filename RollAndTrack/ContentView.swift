@@ -37,6 +37,7 @@ struct ContentView: View {
     @State private var attackPower = 0
     @State private var attackCount = 0
     
+    //ToDo - Modularize the main body into reuseable blocks
     var body: some View {
         VStack{
             
