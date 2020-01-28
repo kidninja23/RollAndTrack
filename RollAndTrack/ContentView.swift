@@ -27,28 +27,19 @@ import SwiftUI
                  if self.dState.allDStates.RollCount < 3 {
                     //ToDo consolidate multiple rolls into single function
                     Button(action: {
-                        self.diceRoll(lockStatus: self.dState.allDStates.Dice1.1, diceFace: &(self.dState.allDStates.Dice1.0))
-                        self.diceRoll(lockStatus: self.dState.allDStates.Dice2.1, diceFace: &(self.dState.allDStates.Dice2.0))
-                        self.diceRoll(lockStatus: self.dState.allDStates.Dice3.1, diceFace: &(self.dState.allDStates.Dice3.0))
-                        self.diceRoll(lockStatus: self.dState.allDStates.Dice4.1, diceFace: &(self.dState.allDStates.Dice4.0))
-                        self.diceRoll(lockStatus: self.dState.allDStates.Dice5.1, diceFace: &(self.dState.allDStates.Dice5.0))
-                        self.diceRoll(lockStatus: self.dState.allDStates.Dice6.1, diceFace: &(self.dState.allDStates.Dice6.0))
-                        self.dState.allDStates.RollCount += 1
-                        },
-
-                         label: { Image("RollButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)
+                        self.dState.rollAll(theStates: self.dState.allDStates)},
+                           label: {
+                            Image("RollButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)
                      }//End label
                         ) //End Button
                 } else {
                     Button(action: {
-                        self.trackValues(dCount: self.dState.maxDice)
-
-                     }//action close
-                        , label: {
-                            Image("SwordButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)
-
-                     }//label close
-                    )//button close
+                        self.trackValues(theDCount: self.dState.maxDice)
+                        self.dState.resetAll()
+                        self.resetPAll()
+                    },
+                           label: {
+                            Image("SwordButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)})//button close
                 }// End Else
                 
                 //Following HStack is for testing purposes only
@@ -62,40 +53,17 @@ import SwiftUI
         }//End ZStack
 
      }
-    func diceRoll(lockStatus: Bool, diceFace: inout Int) {
-        if lockStatus == false {
-            diceFace = Int.random(in: 1...6)
-        }
-    }
-
-     func resetAll(){
-        //reset all dice faces to zero face
-        self.dState.allDStates.Dice1.0 = 0
-        self.dState.allDStates.Dice2.0 = 0
-        self.dState.allDStates.Dice3.0 = 0
-        self.dState.allDStates.Dice4.0 = 0
-        self.dState.allDStates.Dice5.0 = 0
-        self.dState.allDStates.Dice6.0 = 0
-        self.dState.allDStates.Dice7.0 = 0
-        //reset roll count to 0
-        self.dState.allDStates.RollCount = 0
+    
+     func resetPAll(){
         //reset attackCount, onesCount, twosCount, and threesCount to 0
         self.pState.onesCount = 0
         self.pState.twosCount = 0
         self.pState.threesCount = 0
         self.pState.attackCount = 0
-        // reset all lock states
-        self.dState.allDStates.Dice1.1 = false
-        self.dState.allDStates.Dice2.1 = false
-        self.dState.allDStates.Dice3.1 = false
-        self.dState.allDStates.Dice4.1 = false
-        self.dState.allDStates.Dice5.1 = false
-        self.dState.allDStates.Dice6.1 = false
-        self.dState.allDStates.Dice7.1 = false
     }
     
-    func trackValues(dCount: Int) {
-        self.dState.getFaces(dCount: dCount)
+    func trackValues(theDCount: Int) {
+        self.dState.getFaces(dCount: theDCount)
         for value in self.dState.allFaces {
             switch value {
             case 1: self.pState.attackCount += 1
@@ -121,8 +89,9 @@ import SwiftUI
         //Set Attack Power
         self.pState.attackPower = self.pState.attackCount
         //Reset dice variables and states
-        self.resetAll()
     }
+    
+
 
 
  }
