@@ -35,8 +35,9 @@ import SwiftUI
                 } else {
                     Button(action: {
                         self.trackValues(theDCount: self.dState.maxDice)
+                        self.pState.ptsAndPower()
                         self.dState.resetAll()
-                        self.resetPAll()
+                        self.pState.resetPAll()
                     },
                            label: {
                             Image("SwordButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)})//button close
@@ -54,14 +55,6 @@ import SwiftUI
 
      }
     
-     func resetPAll(){
-        //reset attackCount, onesCount, twosCount, and threesCount to 0
-        self.pState.onesCount = 0
-        self.pState.twosCount = 0
-        self.pState.threesCount = 0
-        self.pState.attackCount = 0
-    }
-    
     func trackValues(theDCount: Int) {
         self.dState.getFaces(dCount: theDCount)
         for value in self.dState.allFaces {
@@ -76,23 +69,7 @@ import SwiftUI
                 break
             }
         }
-        //Add values for victoryPoints
-        if self.pState.onesCount >= 3 {
-            self.pState.victoryPoint += (self.pState.onesCount - 3 + 1)
-        }
-        if self.pState.twosCount >= 3 {
-            self.pState.victoryPoint += ((self.pState.twosCount - 3) + 2)
-        }
-        if self.pState.threesCount >= 3 {
-            self.pState.victoryPoint += ((self.pState.threesCount - 3) + 3)
-        }
-        //Set Attack Power
-        self.pState.attackPower = self.pState.attackCount
-        //Reset dice variables and states
     }
-    
-
-
 
  }
 
