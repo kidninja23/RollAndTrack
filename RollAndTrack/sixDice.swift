@@ -11,7 +11,7 @@ import SwiftUI
 struct sixDice: View {
     
 
-    @EnvironmentObject var diceStates : SixDiceStates
+    @EnvironmentObject var dState : DiceStates
     
     var body: some View {
         VStack {
@@ -32,7 +32,7 @@ struct sixDice: View {
 struct sixDice_Previews: PreviewProvider {
     @State static var curRoll = 1
     static var previews: some View {
-        sixDice().environmentObject(SixDiceStates())
+        sixDice().environmentObject(DiceStates())
 
     }
 }
