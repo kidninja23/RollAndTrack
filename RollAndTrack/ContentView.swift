@@ -5,22 +5,20 @@
 //  Created by Jason Bice on 1/15/20.
 //  Copyright © 2020 B Team Games. All rights reserved.
 //
-
+       
 import SwiftUI
 
-struct ContentView: View {
+ struct ContentView: View {
+    @EnvironmentObject var dState : DiceStates
     
-    //ToDo Use a mapping to hold all of the dice variables and implement a for loop on the roll button.
-    @State private var dice1Lock = false
-    @State private var dice2Lock = false
-    @State private var dice3Lock = false
-    @State private var dice4Lock = false
-    @State private var dice5Lock = false
-    @State private var dice6Lock = false
+
+     //ToDo Use a mapping to hold all of the dice variables and implement a for loop on the roll button.
+
 
     @State private var allDice: [String : Int] = ["dice1" : 0, "dice2" : 0, "dice3" : 0, "dice4" : 0, "dice5" : 0, "dice6" : 0 ]
+
     
-    // rollCount determines what actions are available based on how many times a player has rolled.
+     // rollCount determines what actions are available based on how many times a player has rolled.
     @State private var rollCount = 0
     //player determines which player is currently active and dice values will be assigned to.
     @State private var player = 0
@@ -33,41 +31,34 @@ struct ContentView: View {
     @State private var threesCount = 0
     @State private var healthPoints = 6 //artificially set to low value for testing.
     @State private var lootPoints = 0
-    
+
     @State private var attackPower = 0
     @State private var attackCount = 0
-    
-    //ToDo - Modularize the main body into reuseable blocks
+
+     //ToDo - Modularize the main body into reuseable blocks
     var body: some View {
         VStack{
-            
+
             Spacer()
-            Text("Roll Count \(rollCount)")
-            HStack {
-                //dice1
-                Dice(diceFace: allDice["dice1"] ?? 0, isLocked: $dice1Lock, rolling: $rollCount)
-                Dice(diceFace: allDice["dice2"] ?? 0, isLocked: $dice2Lock, rolling: $rollCount)
-                Dice(diceFace: allDice["dice3"] ?? 0, isLocked: $dice3Lock, rolling: $rollCount)
-                Dice(diceFace: allDice["dice4"] ?? 0, isLocked: $dice4Lock, rolling: $rollCount)
-                Dice(diceFace: allDice["dice5"] ?? 0, isLocked: $dice5Lock, rolling: $rollCount)
-                Dice(diceFace: allDice["dice6"] ?? 0, isLocked: $dice6Lock, rolling: $rollCount)
-                
-            }
-            
-            if self.rollCount < 3 {
+            Text("Roll Count " + String(self.dState.allDStates.RollCount))
+            sixDice()
+
+             if self.dState.allDStates.RollCount < 3 {
                 Button(action: {
-                    self.diceRoll(lockStatus: self.dice1Lock, diceNumber: &(self.allDice["dice1"])!)
-                    self.diceRoll(lockStatus: self.dice2Lock, diceNumber: &(self.allDice["dice2"])!)
-                    self.diceRoll(lockStatus: self.dice3Lock, diceNumber: &(self.allDice["dice3"])!)
-                    self.diceRoll(lockStatus: self.dice4Lock, diceNumber: &(self.allDice["dice4"])!)
-                    self.diceRoll(lockStatus: self.dice5Lock, diceNumber: &(self.allDice["dice5"])!)
-                    self.diceRoll(lockStatus: self.dice6Lock, diceNumber: &(self.allDice["dice6"])!)
-                    self.rollCount += 1
+                    //self.diceStates.allDiceStates.Dice1.0 = Int.random(in: 1...6)
+                           
+                    self.diceRoll(lockStatus: self.dState.allDStates.Dice1.1, diceFace: &(self.dState.allDStates.Dice1.0))
+                    self.diceRoll(lockStatus: self.dState.allDStates.Dice2.1, diceFace: &(self.dState.allDStates.Dice2.0))
+                    self.diceRoll(lockStatus: self.dState.allDStates.Dice3.1, diceFace: &(self.dState.allDStates.Dice3.0))
+                    self.diceRoll(lockStatus: self.dState.allDStates.Dice4.1, diceFace: &(self.dState.allDStates.Dice4.0))
+                    self.diceRoll(lockStatus: self.dState.allDStates.Dice5.1, diceFace: &(self.dState.allDStates.Dice5.0))
+                    self.diceRoll(lockStatus: self.dState.allDStates.Dice6.1, diceFace: &(self.dState.allDStates.Dice6.0))
+                    self.dState.allDStates.RollCount += 1
                     },
-                    
-                    label: { Image("RollButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)
-                        
-                }
+
+                     label: { Image("RollButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)
+
+                 }
                     )
             } else {
                 Button(action: {
@@ -104,36 +95,14 @@ struct ContentView: View {
                     }
                     //Set Attack Power
                     self.attackPower = self.attackCount
-                    
-                    //reset all dice faces to zero
-                    //Todo - function for resetting all values at once
-                    self.allDice["dice1"] = 0
-                    self.allDice["dice2"] = 0
-                    self.allDice["dice3"] = 0
-                    self.allDice["dice4"] = 0
-                    self.allDice["dice5"] = 0
-                    self.allDice["dice6"] = 0
-                    //reset roll count to 0
-                    self.rollCount = 0
-                    //reset attackCount, onesCount, twosCount, and threesCount to 0
-                    self.onesCount = 0
-                    self.twosCount = 0
-                    self.threesCount = 0
-                    self.attackCount = 0
-                    // reset all lock states
-                    self.dice1Lock = false
-                    self.dice2Lock = false
-                    self.dice3Lock = false
-                    self.dice4Lock = false
-                    self.dice5Lock = false
-                    self.dice6Lock = false
-                    
-                    
-                }//action close
+                    //Reset dice variables and states
+                    self.resetAll()
+
+                 }//action close
                     , label: {
                         Image("SwordButton").renderingMode(.original).resizable().frame(width: 100, height: 60, alignment: .center)
-                        
-                }//label close
+
+                 }//label close
                 )//button close
             }
             //Following HStack is for testing purposes only
@@ -145,19 +114,46 @@ struct ContentView: View {
                 Text("Health " + String(self.healthPoints))
             }
         }
-        
-    }
-    func diceRoll(lockStatus: Bool, diceNumber: inout Int) {
+
+     }
+    func diceRoll(lockStatus: Bool, diceFace: inout Int) {
         if lockStatus == false {
-            diceNumber = Int.random(in: 1...6)
+            diceFace = Int.random(in: 1...6)
         }
     }
-    
 
-}
+     func resetAll(){
+        //reset all dice faces to zero
+        //Todo - function for resetting all values at once
+        self.dState.allDStates.Dice1.0 = 0
+        self.dState.allDStates.Dice2.0 = 0
+        self.dState.allDStates.Dice3.0 = 0
+        self.dState.allDStates.Dice4.0 = 0
+        self.dState.allDStates.Dice5.0 = 0
+        self.dState.allDStates.Dice6.0 = 0
+        self.dState.allDStates.Dice7.0 = 0
+        //reset roll count to 0
+        self.dState.allDStates.RollCount = 0
+        //reset attackCount, onesCount, twosCount, and threesCount to 0
+        self.onesCount = 0
+        self.twosCount = 0
+        self.threesCount = 0
+        self.attackCount = 0
+        // reset all lock states
+        self.dState.allDStates.Dice1.1 = false
+        self.dState.allDStates.Dice2.1 = false
+        self.dState.allDStates.Dice3.1 = false
+        self.dState.allDStates.Dice4.1 = false
+        self.dState.allDStates.Dice5.1 = false
+        self.dState.allDStates.Dice6.1 = false
+        self.dState.allDStates.Dice7.1 = false
+    }
 
-struct ContentView_Previews: PreviewProvider {
+
+ }
+
+ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(DiceStates())
     }
 }
