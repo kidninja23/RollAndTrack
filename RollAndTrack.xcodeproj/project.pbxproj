@@ -17,6 +17,7 @@
 		96B6188123DFBCFE009BA026 /* DiceStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6187E23DFBCFE009BA026 /* DiceStates.swift */; };
 		96B6188223DFBCFE009BA026 /* sixDice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6187F23DFBCFE009BA026 /* sixDice.swift */; };
 		96B6188323DFBCFE009BA026 /* NewDice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6188023DFBCFE009BA026 /* NewDice.swift */; };
+		96D0686323DFCDD3007CB5CA /* PlayerStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D0686223DFCDD3007CB5CA /* PlayerStates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		96B6187E23DFBCFE009BA026 /* DiceStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceStates.swift; sourceTree = "<group>"; };
 		96B6187F23DFBCFE009BA026 /* sixDice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sixDice.swift; sourceTree = "<group>"; };
 		96B6188023DFBCFE009BA026 /* NewDice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDice.swift; sourceTree = "<group>"; };
+		96D0686223DFCDD3007CB5CA /* PlayerStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,11 +68,12 @@
 			children = (
 				96B6188023DFBCFE009BA026 /* NewDice.swift */,
 				96B6187F23DFBCFE009BA026 /* sixDice.swift */,
-				96B6187E23DFBCFE009BA026 /* DiceStates.swift */,
 				969622DD23CF9C1B00980E4F /* AppDelegate.swift */,
 				969622DF23CF9C1B00980E4F /* SceneDelegate.swift */,
 				969622E123CF9C1B00980E4F /* ContentView.swift */,
+				96D0686223DFCDD3007CB5CA /* PlayerStates.swift */,
 				969622F523CF9E5400980E4F /* Dice.swift */,
+				96B6187E23DFBCFE009BA026 /* DiceStates.swift */,
 				969622E323CF9C1E00980E4F /* Assets.xcassets */,
 				969622E823CF9C1E00980E4F /* LaunchScreen.storyboard */,
 				969622EB23CF9C1E00980E4F /* Info.plist */,
@@ -164,6 +167,7 @@
 				96B6188323DFBCFE009BA026 /* NewDice.swift in Sources */,
 				96B6188223DFBCFE009BA026 /* sixDice.swift in Sources */,
 				969622F623CF9E5400980E4F /* Dice.swift in Sources */,
+				96D0686323DFCDD3007CB5CA /* PlayerStates.swift in Sources */,
 				969622E223CF9C1B00980E4F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

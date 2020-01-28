@@ -10,7 +10,6 @@ import SwiftUI
 
 struct NewDice: View {
     @EnvironmentObject var dState : DiceStates
-    @State var value = "test"
     @State var dNumber : Int
     
     var body: some View {
@@ -34,77 +33,44 @@ struct NewDice: View {
         }
     }
     func dToggle(theD : Int) -> Void {
-        if theD == 1 {
-            self.dState.allDStates.Dice1.1.toggle()
-        }
-        if theD == 2 {
-            self.dState.allDStates.Dice2.1.toggle()
-        }
-        if theD == 3 {
-            self.dState.allDStates.Dice3.1.toggle()
-        }
-        if theD == 4 {
-            self.dState.allDStates.Dice4.1.toggle()
-        }
-        if theD == 5 {
-            self.dState.allDStates.Dice5.1.toggle()
-        }
-        if theD == 6 {
-            self.dState.allDStates.Dice6.1.toggle()
-        }
-        if theD == 7 {
-            self.dState.allDStates.Dice7.1.toggle()
+        switch theD {
+        case 1: self.dState.allDStates.Dice1.1.toggle()
+        case 2: self.dState.allDStates.Dice2.1.toggle()
+        case 3: self.dState.allDStates.Dice3.1.toggle()
+        case 4: self.dState.allDStates.Dice4.1.toggle()
+        case 5: self.dState.allDStates.Dice5.1.toggle()
+        case 6: self.dState.allDStates.Dice6.1.toggle()
+        case 7: self.dState.allDStates.Dice7.1.toggle()
+        default: break
         }
     }
     
     func dFace(theD: Int) -> Int {
         var retVal = 0
-        if theD == 1 {
-            retVal = self.dState.allDStates.Dice1.0
-        }
-        if theD == 2 {
-            retVal = self.dState.allDStates.Dice2.0
-        }
-        if theD == 3 {
-            retVal = self.dState.allDStates.Dice3.0
-        }
-        if theD == 4 {
-            retVal = self.dState.allDStates.Dice4.0
-        }
-        if theD == 5 {
-            retVal = self.dState.allDStates.Dice5.0
-        }
-        if theD == 6 {
-            retVal = self.dState.allDStates.Dice6.0
-        }
-        if theD == 7 {
-            retVal = self.dState.allDStates.Dice6.0
+        switch theD {
+        case 1: retVal = self.dState.allDStates.Dice1.0
+        case 2: retVal = self.dState.allDStates.Dice2.0
+        case 3: retVal = self.dState.allDStates.Dice3.0
+        case 4: retVal = self.dState.allDStates.Dice4.0
+        case 5: retVal = self.dState.allDStates.Dice5.0
+        case 6: retVal = self.dState.allDStates.Dice6.0
+        case 7: retVal = self.dState.allDStates.Dice6.0
+        default: break
         }
         return retVal
     }
     
     func dLock(theD: Int) -> Bool {
         var retVal = false
-        if theD == 1 {
-            retVal = self.dState.allDStates.Dice1.1
-        }
-        if theD == 2 {
-            retVal = self.dState.allDStates.Dice2.1
-        }
-        if theD == 3 {
-            retVal = self.dState.allDStates.Dice3.1
-        }
-        if theD == 4 {
-            retVal = self.dState.allDStates.Dice4.1
-        }
-        if theD == 5 {
-            retVal = self.dState.allDStates.Dice5.1
-        }
-        if theD == 6 {
-            retVal = self.dState.allDStates.Dice6.1
-        }
-        if theD == 7 {
-            retVal = self.dState.allDStates.Dice7.1
+        switch theD {
+        case 1: retVal = self.dState.allDStates.Dice1.1
+        case 2: retVal = self.dState.allDStates.Dice2.1
+        case 3: retVal = self.dState.allDStates.Dice3.1
+        case 4: retVal = self.dState.allDStates.Dice4.1
+        case 5: retVal = self.dState.allDStates.Dice5.1
+        case 6: retVal = self.dState.allDStates.Dice6.1
+        case 7: retVal = self.dState.allDStates.Dice6.1
+        default: break
         }
         return retVal
     }
