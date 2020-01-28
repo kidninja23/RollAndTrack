@@ -21,20 +21,7 @@ class PlayerStates : ObservableObject {
     @Published var attackPower : Int = 0
     @Published var attackCount : Int = 0
     
-    func trackValues(theDCount: Int) {
-        self.dState.getFaces(dCount: theDCount)
-        for value in self.dState.allFaces {
-            switch value {
-            case 1: self.attackCount += 1
-            case 2: if self.healthPoints < 10 {self.healthPoints += 1 }
-            case 3: self.lootPoints += 1
-            case 4: self.onesCount += 1
-            case 5: self.twosCount += 1
-            case 6: self.threesCount += 1
-            default:
-                break
-            }
-        }
+    func ptsAndPower() {
         //Add values for victoryPoints
         if self.onesCount >= 3 {
             self.victoryPoint += (self.onesCount - 3 + 1)
@@ -47,7 +34,15 @@ class PlayerStates : ObservableObject {
         }
         //Set Attack Power
         self.attackPower = self.attackCount
-
+        //Reset dice variables and states
+    }
+    
+     func resetPAll(){
+        //reset attackCount, onesCount, twosCount, and threesCount to 0
+        self.onesCount = 0
+        self.twosCount = 0
+        self.threesCount = 0
+        self.attackCount = 0
     }
     
 }
